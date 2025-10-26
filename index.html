@@ -1329,7 +1329,7 @@
 
             const hasIndianStocks = Object.keys(portfolio).some(s => s.includes('.NS') || s.includes('.BO'));
             const hasUSStocks = Object.keys(portfolio).some(s => !s.includes('.NS') && !s.includes('.BO'));
-            const summaryCurrency = ';
+            const summaryCurrency = hasIndianStocks && !hasUSStocks ? '₹' : '$';
 
             html += `
                 <div class="summary-card">
