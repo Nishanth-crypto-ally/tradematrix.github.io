@@ -100,7 +100,7 @@
             min-width: 140px;
         }
 
-        .tab:hover {
+        .tab: hover {
             background: rgba(124,58,237,0.1);
             color: #c4b5fd;
         }
@@ -162,7 +162,7 @@
             color: #fff;
         }
 
-        input:focus, select:focus {
+        input: focus, select: focus {
             outline: none;
             border-color: #7c3aed;
             background: rgba(30,30,30,0.9);
@@ -193,16 +193,16 @@
             box-shadow: 0 10px 30px rgba(124,58,237,0.3);
         }
 
-        .btn:hover {
+        .btn: hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(124,58,237,0.5);
         }
 
-        .btn:active {
+        .btn: active {
             transform: translateY(-1px);
         }
 
-        .btn:disabled {
+        .btn: disabled {
             opacity: 0.5;
             cursor: not-allowed;
             transform: none;
@@ -639,7 +639,7 @@
                 
                 <div class="input-group">
                     <label for="portSymbol">Stock Symbol</label>
-                    <input type="text" id="portSymbol" placeholder="e.g., AAPL, RELIANCE.NS" />
+                    <input type="text" id="portSymbol" placeholder="e.g., AAPL, NVDA" />
                 </div>
 
                 <div class="input-group">
@@ -915,7 +915,7 @@
                 stopLossPct,
                 targetPrice: price * (1 + expectedReturn / 100),
                 stopLoss: price * (1 - stopLossPct / 100),
-                reason: reasons.length > 0 ? reasons.join(', ') : 'Market analysis complete'
+                reason: reasons.length > 0 ? reasons.join(', '): 'Market analysis complete'
             };
         }
 
@@ -1637,3 +1637,4 @@
     </script>
 </body>
 </html>
+
