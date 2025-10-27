@@ -932,78 +932,7 @@
         }
 
         // Draw candlestick chart
-        function drawCandleChart(ohlcData, currency) {
-            const canvas = document.getElementById('candleChart');
-            if (!canvas) return;
-            
-            const ctx = canvas.getContext('2d');
-            destroyChart('candle');
-            
-            const data = ohlcData.slice(-30);
-
-            try {
-                chartInstances.candle = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        datasets: [{
-                            label: 'Price',
-                            data: data.map(d => ({
-                                x: d.x,
-                                y: [d.o, d.h, d.l, d.c]
-                            })),
-                            backgroundColor: data.map(d => d.c >= d.o ? 'rgba(16, 185, 129, 0.8)' : 'rgba(239, 68, 68, 0.8)'),
-                            borderColor: data.map(d => d.c >= d.o ? '#10b981' : '#ef4444'),
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { display: false },
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        const idx = context.dataIndex;
-                                        const point = data[idx];
-                                        return [
-                                            `Open: ${currency}${point.o.toFixed(2)}`,
-                                            `High: ${currency}${point.h.toFixed(2)}`,
-                                            `Low: ${currency}${point.l.toFixed(2)}`,
-                                            `Close: ${currency}${point.c.toFixed(2)}`
-                                        ];
-                                    }
-                                }
-                            }
-                        },
-                        scales: {
-                            x: {
-                                type: 'time',
-                                time: {
-                                    unit: 'day',
-                                    displayFormats: { day: 'MMM d' }
-                                },
-                                grid: { color: 'rgba(255,255,255,0.05)' },
-                                ticks: { color: '#888' }
-                            },
-                            y: {
-                                grid: { color: 'rgba(255,255,255,0.05)' },
-                                ticks: {
-                                    color: '#888',
-                                    stepSize: 10,
-                                    callback: function(value) {
-                                        return currency + value.toFixed(0);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
-            } catch (e) {
-                console.error('Candlestick chart error:', e);
-            }
-        }
-
+        
         // Draw line chart
         function drawChart(timestamps, prices, currency) {
             const canvas = document.getElementById('priceChart');
@@ -1180,7 +1109,7 @@
                 results.classList.add('show');
                 
                 setTimeout(() => {
-                    drawCandleChart(priceData.ohlc, currency);
+                    
                     drawChart(timestamps, priceData.prices, currency);
                     scrollToElement('results');
                 }, 100);
@@ -1637,6 +1566,7 @@
     </script>
 </body>
 </html>
+
 
 
 
